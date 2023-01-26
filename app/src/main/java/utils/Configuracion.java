@@ -17,7 +17,8 @@ public class Configuracion {
 
         try {
             //configuracion.load(getClass().getResourceAsStream("/config/config.properties"));
-            configuracion.load(new FileInputStream(new File("C:\\Users\\eduardo\\Documents\\Eduardo Pintos\\msgraph-training-java\\graphtutorial\\app\\src\\main\\java\\config\\config.properties")));
+            //configuracion.load(new FileInputStream(new File("C:\\Users\\eduardo\\Documents\\Eduardo Pintos\\msgraph-training-java\\graphtutorial\\app\\src\\main\\java\\config\\config.properties")));
+            configuracion.load(new FileInputStream(new File("C:\\Users\\AGR\\IdeaProjects\\graphtutorial\\app\\src\\main\\java\\config\\config.properties")));
 
             if(!configuracion.isEmpty()){
                 return configuracion;

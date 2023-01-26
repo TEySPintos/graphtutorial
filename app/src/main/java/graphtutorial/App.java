@@ -76,7 +76,7 @@ public class App {
                 conexion.connectar();
 
                 //Se realiza un conteo de cuántos emails hay que enviar
-                conexion.consultar("SELECT COUNT(*) FROM ZPRUEBAEMAIL WHERE COALESCE(emailMod,email) IS NOT NULL AND idTrimestre = 12 AND descCarga = 1 AND iden = 2");
+                conexion.consultar("SELECT COUNT(*) FROM ZPRUEBAEMAIL WHERE COALESCE(emailMod,email) IS NOT NULL");
 
                 conexion.getResultSet().next();
 
@@ -90,7 +90,7 @@ public class App {
                 rzSocial = new String[conexion.getResultSet().getInt(1)];
 
                 //Se obtienen y se guardan los datos de los emails a enviar
-                conexion.consultar("SELECT M.iden, M.identificador, M.rzSocial, COALESCE(M.emailMod, M.email) AS emailMod, M.usuario, M.password FROM ZPRUEBAEMAIL M WHERE COALESCE(emailMod,email) IS NOT NULL AND idTrimestre = 12 AND descCarga = 1 AND iden = 2");
+                conexion.consultar("SELECT M.iden, M.identificador, M.rzSocial, COALESCE(M.emailMod, M.email) AS emailMod, M.usuario, M.password FROM ZPRUEBAEMAIL M WHERE COALESCE(emailMod,email) IS NOT NULL");
 
                 while(conexion.getResultSet().next()){
                     identificador[conteo] = conexion.getResultSet().getString("identificador");
@@ -109,7 +109,8 @@ public class App {
 
                     try {
                         fechaEnvio = new Date();
-                        carta = "C:\\Users\\eduardo\\Documents\\Eduardo Pintos\\msgraph-training-java\\graphtutorial\\app\\ES6333-CartaECE_4T2022_firmada.pdf";
+                        //carta = "C:\\Users\\eduardo\\Documents\\Eduardo Pintos\\msgraph-training-java\\graphtutorial\\app\\ES6333-CartaECE_4T2022_firmada.pdf";
+                        carta = "C:\\Users\\AGR\\IdeaProjects\\graphtutorial\\app\\ES6333-CartaECE_4T2022_firmada.pdf";
                         System.out.println(aux + 1);
                         System.out.println(identificador[aux]);
                         sendMail(destinatario[aux], carta, rzSocial[aux], identificador[aux], usuario[aux], password[aux]);
